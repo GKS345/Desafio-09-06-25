@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dinamômetro Digital</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <h1>Dinamômetro Digital</h1>
+    </header>
+
+    <!-- Seção 1: Cálculo de Potência -->
+     
+    <h2>Potência do Motor (com base no torque)</h2>
+    <input type="number" id="torque" placeholder="Torque (N·m)">
+    <input type="number" id="rpm" placeholder="RPM">
+    <br><br>
+    <button onclick="calcularPotencia()">Calcular Potência</button>
+    <h3 id="resultadoPotencia"></h3>
+
+    <!-- Seção 2: Cálculo da Cilindrada -->
+    <h2>Cálculo da Litragem / Cilindrada do Motor</h2>
+    <input type="number" id="diametro" placeholder="Diâmetro (mm)">
+    <input type="number" id="curso" placeholder="Curso (mm)">
+    <input type="number" id="cilindros" placeholder="Nº de cilindros">
+    <br><br>
+    <button onclick="calcularCilindrada()">Calcular Litragem</button>
+    <h3 id="resultadoCilindrada"></h3>
+
+    <footer>
+        <div class="colunaF">
+            <p>Ferramenta educativa para entusiastas de motores.</p>
+        </div>
+    </footer>
+
+    <script>
+        function calcularPotencia() {
+            const torque = parseFloat(document.getElementById("torque").value);
+            const rpm = parseFloat(document.getElementById("rpm").value);
+            const resultado = document.getElementById("resultadoPotencia");
+
+            if (isNaN(torque) || isNaN(rpm)) {
+                resultado.innerText = "Preencha todos os campos.";
+                return;
+            }
+
+            const potencia = (torque * rpm) / 7127;
+            resultado.innerText = `Potência estimada: ${potencia.toFixed(2)} cv`;
+        }
+
+        function calcularCilindrada() {
+            const diametro = parseFloat(document.getElementById("diametro").value);
+            const curso = parseFloat(document.getElementById("curso").value);
+            const cilindros = parseInt(document.getElementById("cilindros").value);
+            const resultado = document.getElementById("resultadoCilindrada");
+
+            if (isNaN(diametro) || isNaN(curso) || isNaN(cilindros)) {
+                resultado.innerText = "Preencha todos os campos.";
+                return;
+            }
+
+            const volumeUnitario = (Math.PI / 4) * Math.pow(diametro, 2) * curso;
+            const volumeTotal = (volumeUnitario * cilindros) / 1000;
+
+            resultado.innerText = `Cilindrada total: ${volumeTotal.toFixed(2)} litros`;
+        }
+    </script>
+</body>
+</html>
