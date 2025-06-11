@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Dinamômetro Digital</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
+
 <body>
     <header>
         <h1>Dinamômetro Digital</h1>
     </header>
 
-    <!-- Seção 1: Cálculo de Potência -->
-     
     <h2>Potência do Motor (com base no torque)</h2>
     <input type="number" id="torque" placeholder="Torque (N·m)">
     <input type="number" id="rpm" placeholder="RPM">
@@ -19,7 +19,6 @@
     <button onclick="calcularPotencia()">Calcular Potência</button>
     <h3 id="resultadoPotencia"></h3>
 
-    <!-- Seção 2: Cálculo da Cilindrada -->
     <h2>Cálculo da Litragem / Cilindrada do Motor</h2>
     <input type="number" id="diametro" placeholder="Diâmetro (mm)">
     <input type="number" id="curso" placeholder="Curso (mm)">
@@ -30,7 +29,7 @@
 
     <footer>
         <div class="colunaF">
-            <p>Ferramenta educativa para entusiastas de motores.</p>
+            <p>Ferramenta educacional para entusiastas de motores.</p>
         </div>
     </footer>
 
@@ -67,4 +66,5 @@
         }
     </script>
 </body>
+
 </html>
